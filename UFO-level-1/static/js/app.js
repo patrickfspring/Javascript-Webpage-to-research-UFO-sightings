@@ -1,43 +1,6 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
-var tableContent = "";
-var columns = [];
-
-// Create the header for the table
-for(var prop in filteredEvents[0]) {
-  if(tableData[0].hasOwnProperty(prop)) {
-  // Keep the columns for later to get column values from the 'data' object.
-     columns.push(prop);
-  };
-};
-
-tableContent = tableContent + "</tr>";
-
-// Create individual data rows.
-tableData.forEach(function(row) {
-  // Create a new row in the table for every data array element.
-  tableContent = tableContent + "<tr>";
-
-  columns.forEach(function(cell) {
-    // Cell is the property name for each column, row[cell] provides value of that cell.
-    tableContent = tableContent + "<td>" + row[cell] + "</td>";
-  });
-  tableContent = tableContent + "</tr>";
-
-});
-
-//console.log(tableContent);
-$("#ufo-table").append(tableContent);
-
-// Select the filter button
-var button = d3.select("#filter-btn");
-
-// Create event handler
-button.on("click", runFilteredList);
-//console.log("here");
-
 // Complete the event handler function for the form
 function runFilteredList() {
 
@@ -60,10 +23,19 @@ function runFilteredList() {
   var columns = [];
 
   // Create the header for the table
+  //for(var prop in filteredEvents[0]) {
+    //if(filteredEvents[0].hasOwnProperty(prop)) {
+    // Keep the columns for later to get column values from the 'data' object.
+       //columns.push(prop);
+    //};
+  //};
+  //tableContent = tableContent + "<tr>";
+
   for(var prop in filteredEvents[0]) {
     if(filteredEvents[0].hasOwnProperty(prop)) {
+    //tableContent = tableContent + ("<th>" + prop + "</th>");
     // Keep the columns for later to get column values from the 'data' object.
-       columns.push(prop);
+      columns.push(prop);
     };
   };
 
@@ -83,7 +55,51 @@ function runFilteredList() {
   });
 
     //console.log(tableContent);
+    $("#ufo-table").find("tbody").empty();
     $("#ufo-table").append(tableContent);
 
 };
 
+// Select the filter button
+var button = d3.select("#filter-btn");
+// Select the form
+var form = d3.select("#form");
+
+// Create event handler
+button.on("click", runFilteredList);
+form.on("submit", runFilteredList);
+
+console.log("here4");
+
+// YOUR CODE HERE!
+var tableContent = "";
+var columns = [];
+
+// Create the header for the table
+//tableContent = tableContent + "<tr>";
+
+for(var prop in tableData[0]) {
+  if(tableData[0].hasOwnProperty(prop)) {
+  //tableContent = tableContent + ("<th>" + prop + "</th>");
+  // Keep the columns for later to get column values from the 'data' object.
+     columns.push(prop);
+  };
+};
+
+tableContent = tableContent + "</tr>";
+
+// Create individual data rows.
+tableData.forEach(function(row) {
+  // Create a new row in the table for every data array element.
+  tableContent = tableContent + "<tr>";
+
+  columns.forEach(function(cell) {
+    // Cell is the property name for each column, row[cell] provides value of that cell.
+    tableContent = tableContent + "<td>" + row[cell] + "</td>";
+  });
+  tableContent = tableContent + "</tr>";
+
+});
+
+//console.log(tableContent);
+$("#ufo-table").append(tableContent);
