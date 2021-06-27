@@ -83,6 +83,10 @@ select {
   min-width: 70px;
 }
 
+.table-bordered th, .table-bordered td { 
+  border: 1px solid #ddd!important
+}
+
 .loader {
   margin-top: 50px;
 }
