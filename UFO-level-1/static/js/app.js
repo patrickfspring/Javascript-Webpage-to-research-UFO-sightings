@@ -34,7 +34,7 @@ function initialLoad() {
 
 }  
 
-// Complete the event handler function to filter the entire dataset.
+// Event handler function to filter the entire dataset.
 function runFilteredList() {
 
   // Prevent the page from refreshing.
